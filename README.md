@@ -15,8 +15,13 @@ It uses the requests lib from Kenneth Reitz:
 
 ## Instalation
 
-First edit the script and change the ```domain```, ```username``` and ```password``` variables at the top.
-Copy the script to ```/usr/local/bin``` and edit your ```/etc/network/interfaces``` file:
+First you need an authentication token. You can use ```createSAPOToken.py``` for that. Just run:
+
+```python createSAPOToken.py myuser@sapo.pt```
+
+Now, edit the update script and change the ```domain``` and ```token``` variables at the top.
+
+Copy the script to ```/usr/local/bin``` and edit your ```/etc/network/interfaces``` file like this:
 
 Before
 
