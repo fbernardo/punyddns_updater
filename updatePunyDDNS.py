@@ -1,3 +1,4 @@
+import urllib
 import requests
 import sys
 import re
@@ -5,10 +6,9 @@ import xml.etree.ElementTree as ET
 
 domain = "<your Puny DDNS address>"
 record_type = "A"
-username = "<your SAPO login>"
-password = "<your SAPO password>"
+token = "<your SAPO auth token>"
 
-UpdateIPServiceURL = "https://services.sapo.pt/PunyUrl/DNS/UpdateDNs?domain={0}&ip={1}&record_type={2}&ESBUsername={3}&ESBPassword={4}"
+UpdateIPServiceURL = "https://services.sapo.pt/PunyUrl/DNS/UpdateDNs?domain={0}&ip={1}&record_type={2}&ESBToken={3}"
 
 def main(argv=None):
 	# get ip address
@@ -26,7 +26,7 @@ def main(argv=None):
 		return 0
 
 	# construct the update url
-	updateurl = UpdateIPServiceURL.format(domain, ip, record_type, username, password)
+	updateurl = UpdateIPServiceURL.format(urllib.quote(domain), ip, record_type, token)
 
 	# go for it
 	r2 = requests.get(updateurl)	
